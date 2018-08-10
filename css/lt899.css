@@ -1,10 +1,13 @@
 @charset "utf-8";
 
+#breadcrumb {
+    width: 100%;
+}
+
 #restaurants-list li {
 	margin: 10px;
 	min-height: 300px;
 	padding: 0 20px 15px;
-	/* width: 225px; */
 	float: left;
 }
 
@@ -20,4 +23,10 @@
     height: 35px;
     margin: 10px;
     padding: 0 10px;
+}
+
+/************************** Restaurtant Details ************************/
+
+.inside #map-container {
+	width: 100%;
 }
