@@ -1,0 +1,23 @@
+@charset "utf-8";
+
+#restaurants-list li {
+	margin: 10px;
+	min-height: 300px;
+	padding: 0 20px 15px;
+	/* width: 225px; */
+	float: left;
+}
+
+
+.filter-options h2 {
+    font-size: 1.2rem;
+    padding: 10px 0 0 10px ;
+    margin: 0px;
+}
+
+.filter-options select {
+    font-size: 12pt;
+    height: 35px;
+    margin: 10px;
+    padding: 0 10px;
+}

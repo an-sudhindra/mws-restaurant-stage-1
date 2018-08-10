@@ -1,15 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" >
 		<link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
 		<link rel="stylesheet" href="css/styles.css">
-		<link rel="stylesheet" href="css/responsive.css">
 		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin="" />
+		<link rel="stylesheet" type="text/css" media="screen and (max-width: 360px)" href="css/lt360.css" />
+		<link rel="stylesheet" type="text/css" media="screen and (min-width: 361px) and (max-width: 899px)" href="css/lt899.css" />
+		<link rel="stylesheet" type="text/css" media="screen and (min-width: 900px)" href="css/min900.css" />
 		<title>Restaurant Reviews</title>
 	</head>
 	<body>
+		<a href="#container" class="skip-link">Skip to main content</a>
 		<header>
 			<nav>
 				<h1>
@@ -18,23 +21,34 @@
 			</nav>
 		</header>
 
-		<main id="maincontent">
+		<main role="main" id="maincontent">
 			<section id="map-container">
 				<div id="map"></div>
 			</section>
-			<section>
+			<section id="container" class="container" tabindex="-1">
 				<div class="filter-options">
 					<h2>Filter Results</h2>
-					<select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()">
+					<select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()" aria-label="Select A Neighborhood">
 						<option value="all">All Neighborhoods</option>
 					</select>
-					<select id="cuisines-select" name="cuisines" onchange="updateRestaurants()">
+					<select id="cuisines-select" name="cuisines" onchange="updateRestaurants()" aria-label="Select A Cuisine">
 						<option value="all">All Cuisines</option>
 					</select>
 				</div>
 				<ul id="restaurants-list"></ul>
 			</section>
 		</main>
+		<script>
+			if ('serviceWorker' in navigator) {
+				window.addEventListener('load', function () {
+					navigator.serviceWorker.register('/service_worker.js', {scope: './'}).then(function (registration) {
+				  		console.log('ServiceWorker registration successful with scope: ', registration.scope);
+					}, function (err) {
+						console.log('ServiceWorker registration failed: ', err);
+					});
+				});
+			}
+		</script>
 		<script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==" crossorigin=""></script>
 		<script type="application/javascript" charset="utf-8" src="js/utility.js"></script>
 		<script type="application/javascript" charset="utf-8" src="js/dbhelper.js"></script>
