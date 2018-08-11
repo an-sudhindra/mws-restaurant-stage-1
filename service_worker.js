@@ -4,7 +4,7 @@ self.addEventListener('install', function (event) {
 	event.waitUntil(
 		caches.open(staticCacheName).then(function (cache) {
 			return cache.addAll([
-				'/skeleton',
+				'/',
 				'/js/main.js',
 				'/js/restaurant_info.js',
 				'/js/dbhelper.js',
@@ -47,12 +47,12 @@ self.addEventListener('activate', function (event) {
 self.addEventListener('fetch', function (event) {
 	let requestUrl = new URL(event.request.url);
 
-	if (requestUrl.origin === location.origin) {
-		if (requestUrl.pathname === '/') {
-			event.respondWith(caches.match('/skeleton'));
-			return;
-		}
-	}
+	// if (requestUrl.origin === location.origin) {
+	// 	if (requestUrl.pathname === '/') {
+	// 		event.respondWith(caches.match('/skeleton'));
+	// 		return;
+	// 	}
+	// }
 
 	event.respondWith(
 		caches.match(event.request).then(function (response) {
